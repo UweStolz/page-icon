@@ -1,10 +1,10 @@
 import 'source-map-support/register';
 
-const url = require('url');
-const getPage = require('./modules/getPage');
-const getIconLinks = require('./modules/getIconLinks');
-const downloadIcons = require('./modules/download/downloadIcons');
-const findBestIcon = require('./modules/findBestIcon');
+import url from 'url';
+import getPage from './modules/getPage';
+import getIconLinks from './modules/getIconLinks';
+import downloadIcons from './modules/download/downloadIcons';
+import findBestIcon from './modules/findBestIcon';
 
 function isHttps(pageUrl) {
   return url.parse(pageUrl).protocol === 'https:';
@@ -16,10 +16,8 @@ function makeHttps(pageUrl) {
   return url.format(parsed);
 }
 
-function main(pageUrl, options = {}) {
-  const bestWithPref = function (icons) {
-    return findBestIcon(icons, options.ext);
-  };
+export default function main(pageUrl, options = {}) {
+  const bestWithPref = (icons) => findBestIcon(icons, options.ext);
 
   return getPage(pageUrl)
     .then((dom) => getIconLinks(pageUrl, dom))
@@ -34,5 +32,3 @@ function main(pageUrl, options = {}) {
       return main(httpsUrl, options);
     });
 }
-
-module.exports = main;

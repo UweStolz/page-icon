@@ -1,6 +1,6 @@
-const axios = require('axios');
+import axios from 'axios';
 
-function getPage(pageUrl) {
+export default function getPage(pageUrl) {
   return new Promise(((resolve, reject) => {
     axios.get(pageUrl)
       .then((response) => {
@@ -11,5 +11,3 @@ function getPage(pageUrl) {
       });
   }));
 }
-
-module.exports = getPage;

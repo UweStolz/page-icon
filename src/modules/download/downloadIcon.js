@@ -1,16 +1,17 @@
-const axios = require('axios');
-const url = require('url');
-const fileType = require('file-type');
+import axios from 'axios';
+import url from 'url';
+import fileType from 'file-type';
 
-function getExtension(downloadUrl) {
-  return downloadUrl.match(/\.(png|jpg|ico)/)[0];
-}
+// Unused!?
+// function getExtension(downloadUrl) {
+//   return downloadUrl.match(/\.(png|jpg|ico)/)[0];
+// }
 
 function getSiteDomain(siteUrl) {
   return url.parse(siteUrl).hostname;
 }
 
-function downloadIcon(iconUrl) {
+export default function downloadIcon(iconUrl) {
   const iconData = new Promise(((resolve, reject) => {
     axios.get(iconUrl, {
       responseType: 'arraybuffer',
@@ -50,5 +51,3 @@ function downloadIcon(iconUrl) {
     };
   });
 }
-
-module.exports = downloadIcon;

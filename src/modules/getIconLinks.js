@@ -1,5 +1,5 @@
-const cheerio = require('cheerio');
-const url = require('url');
+import cheerio from 'cheerio';
+import url from 'url';
 
 function hrefIsIcon(href) {
   return /((icon.*\.(png|jpg))|(\w+\.ico))/.test(href);
@@ -38,7 +38,7 @@ function metaTagLinks($) {
   return links;
 }
 
-function getIconLinks(rootUrl, dom) {
+export default function getIconLinks(rootUrl, dom) {
   const $ = cheerio.load(dom);
   let iconLinks = [];
 
@@ -50,5 +50,3 @@ function getIconLinks(rootUrl, dom) {
   iconLinks.push(url.resolve(getDomainUrl(rootUrl), 'apple-touch-icon.png'));
   return iconLinks;
 }
-
-module.exports = getIconLinks;

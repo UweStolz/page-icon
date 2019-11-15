@@ -12,9 +12,10 @@ function sortIconsBySize(icons) {
  * @param icons
  * @param [ext]
  */
-function findBestIcon(icons, ext) {
+export default function findBestIcon(icons, ext) {
   const sorted = sortIconsBySize(icons);
   if (ext) {
+    // eslint-disable-next-line no-restricted-syntax
     for (const icon of sorted) {
       if (icon.ext === ext) {
         return icon;
@@ -24,5 +25,3 @@ function findBestIcon(icons, ext) {
 
   return sorted[0];
 }
-
-module.exports = findBestIcon;
