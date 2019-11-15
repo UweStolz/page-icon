@@ -14,7 +14,7 @@ function makeHttps(pageUrl: string): string {
   return url.format(parsed);
 }
 
-export default async function main(pageUrl: string, options: any = {}): Promise<any> {
+export default async function pageIcon(pageUrl: string, options: any = {}): Promise<any> {
   const bestWithPref = (icons: any) => findBestIcon(icons, options.ext);
 
   return getPage(pageUrl)
@@ -27,14 +27,14 @@ export default async function main(pageUrl: string, options: any = {}): Promise<
       }
 
       const httpsUrl = makeHttps(pageUrl);
-      return main(httpsUrl, options);
+      return pageIcon(httpsUrl, options);
     });
 }
 
 // FIXME - Test
 async function execute(): Promise<void> {
   try {
-    const icon = await main('https://www.facebook.com/');
+    const icon = await pageIcon('https://www.facebook.com/');
     console.log('ICON: ', icon);
   } catch (err) {
     console.error(err);
