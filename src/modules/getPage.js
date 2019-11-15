@@ -1,15 +1,15 @@
 const axios = require('axios');
 
 function getPage(pageUrl) {
-    return new Promise(function(resolve, reject) {
-        axios.get(pageUrl)
-            .then(function (response) {
-                resolve(response.data);
-            })
-            .catch(function (response) {
-                reject(response);
-            });
-    });
+  return new Promise(((resolve, reject) => {
+    axios.get(pageUrl)
+      .then((response) => {
+        resolve(response.data);
+      })
+      .catch((response) => {
+        reject(response);
+      });
+  }));
 }
 
 module.exports = getPage;

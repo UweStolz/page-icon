@@ -3,51 +3,52 @@ const url = require('url');
 const fileType = require('file-type');
 
 function getExtension(downloadUrl) {
-    return downloadUrl.match(/\.(png|jpg|ico)/)[0];
+  return downloadUrl.match(/\.(png|jpg|ico)/)[0];
 }
 
 function getSiteDomain(siteUrl) {
-    return url.parse(siteUrl).hostname;
+  return url.parse(siteUrl).hostname;
 }
 
 function downloadIcon(iconUrl) {
-    const iconData = new Promise(function(resolve, reject) {
-        axios.get(iconUrl, {
-            responseType: 'arraybuffer',
-            //'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/48.0.2564.116 Safari/537.36'
-        })
-            .then(function(response) {
-                resolve(response.data);
-            })
-            .catch(function(error) {
-                if (error.status === 404) {
-                    resolve();
-                    return;
-                }
-                reject(error);
-            });
-    });
-
-    return iconData.then(iconData => {
-        if (!iconData) {
-            return;
+  const iconData = new Promise(((resolve, reject) => {
+    axios.get(iconUrl, {
+      responseType: 'arraybuffer',
+      // 'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/48.0.2564.116 Safari/537.36'
+    })
+      .then((response) => {
+        resolve(response.data);
+      })
+      .catch((error) => {
+        if (error.status === 404) {
+          resolve();
+          return;
         }
+        reject(error);
+      });
+  }));
 
-        const fileDetails = fileType(iconData);
-        if (!fileDetails) {
-            return null;
-        }
+  return iconData.then((iconData) => {
+    if (!iconData) {
+      return;
+    }
 
-        // add `.` to ext
-        fileDetails.ext = `.${fileDetails.ext}`;
+    const fileDetails = fileType(iconData);
+    if (!fileDetails) {
+      return null;
+    }
 
-        return Object.assign({
-            source: iconUrl,
-            name: getSiteDomain(iconUrl),
-            data: iconData,
-            size: iconData.length
-        }, fileDetails);
-    });
+    // add `.` to ext
+    fileDetails.ext = `.${fileDetails.ext}`;
+
+    return {
+      source: iconUrl,
+      name: getSiteDomain(iconUrl),
+      data: iconData,
+      size: iconData.length,
+      ...fileDetails,
+    };
+  });
 }
 
 module.exports = downloadIcon;
