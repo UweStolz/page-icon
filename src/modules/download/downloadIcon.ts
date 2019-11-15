@@ -7,11 +7,11 @@ import fileType from 'file-type';
 //   return downloadUrl.match(/\.(png|jpg|ico)/)[0];
 // }
 
-function getSiteDomain(siteUrl) {
+function getSiteDomain(siteUrl: string): string | undefined {
   return url.parse(siteUrl).hostname;
 }
 
-export default function downloadIcon(iconUrl) {
+export default async function downloadIcon(iconUrl: string): Promise<any> {
   const iconData = new Promise(((resolve, reject) => {
     axios.get(iconUrl, {
       responseType: 'arraybuffer',
@@ -29,7 +29,7 @@ export default function downloadIcon(iconUrl) {
       });
   }));
 
-  return iconData.then((iconData) => {
+  return iconData.then((iconData: any) => {
     if (!iconData) {
       return;
     }
@@ -40,8 +40,9 @@ export default function downloadIcon(iconUrl) {
     }
 
     // add `.` to ext
-    fileDetails.ext = `.${fileDetails.ext}`;
+    fileDetails.ext = `.${fileDetails.ext}` as any;
 
+    // eslint-disable-next-line consistent-return
     return {
       source: iconUrl,
       name: getSiteDomain(iconUrl),

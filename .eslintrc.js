@@ -1,32 +1,32 @@
 module.exports = {
   root: true,
   env: {
-    es6: true,
+    browser: true,
     node: true,
     jest: true,
   },
+
   extends: [
     'airbnb-base',
+    "plugin:@typescript-eslint/recommended",
   ],
-  globals: {
-    Atomics: 'readonly',
-    SharedArrayBuffer: 'readonly',
+
+  rules: {
+    'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',
+    'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
+    'import/no-extraneous-dependencies': ['error', { 'devDependencies': true, 'optionalDependencies': true, 'peerDependencies': true }],
+    '@typescript-eslint/ban-ts-ignore': 'off',
+    'max-len': [0, { code: 100, ignoreStrings: true }],
   },
-  parserOptions: {
-    ecmaVersion: 2018,
-    sourceType: 'module',
-  },
+
+  parser: "@typescript-eslint/parser",
+  plugins: ["@typescript-eslint"],
+
   settings: {
     "import/resolver": {
       node: {
         extensions: [".js", ".ts"]
       }
     }
-  },
-  rules: {
-    'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',
-    'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
-    'import/no-extraneous-dependencies': ['error', { 'devDependencies': true, 'optionalDependencies': true, 'peerDependencies': true }],
-    'max-len': [0, { code: 100, ignoreStrings: true }],
   },
 };

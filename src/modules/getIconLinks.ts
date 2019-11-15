@@ -1,19 +1,19 @@
-import cheerio from 'cheerio';
+import { load } from 'cheerio';
 import url from 'url';
 
-function hrefIsIcon(href) {
+function hrefIsIcon(href: string): boolean {
   return /((icon.*\.(png|jpg))|(\w+\.ico))/.test(href);
 }
 
-function getDomainUrl(someUrl) {
+function getDomainUrl(someUrl: string): string {
   const parsedUrl = url.parse(someUrl);
-  parsedUrl.pathname = null;
-  return parsedUrl.format();
+  parsedUrl.pathname = undefined;
+  return url.format(parsedUrl);
 }
 
-function linkTagLinks($) {
-  const links = [];
-  $('link').each((index, element) => {
+function linkTagLinks($: any): any[] {
+  const links: any[] = [];
+  $('link').each((index: number, element: any) => {
     const href = $(element).attr('href');
     if (!hrefIsIcon(href)) {
       return;
@@ -23,9 +23,9 @@ function linkTagLinks($) {
   return links;
 }
 
-function metaTagLinks($) {
-  const links = [];
-  $('meta').each((index, element) => {
+function metaTagLinks($: any): any[] {
+  const links: any[] = [];
+  $('meta').each((index: number, element: any) => {
     const property = $(element).attr('property');
     if (property !== 'og:image') {
       return;
@@ -38,9 +38,9 @@ function metaTagLinks($) {
   return links;
 }
 
-export default function getIconLinks(rootUrl, dom) {
-  const $ = cheerio.load(dom);
-  let iconLinks = [];
+export default function getIconLinks(rootUrl: string, dom: string|Buffer): string[] {
+  const $ = load(dom);
+  let iconLinks: any[] = [];
 
   iconLinks = iconLinks.concat(linkTagLinks($));
   iconLinks = iconLinks.concat(metaTagLinks($));

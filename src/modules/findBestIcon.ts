@@ -1,5 +1,5 @@
-function sortIconsBySize(icons) {
-  return icons.sort((a, b) => {
+function sortIconsBySize(icons: any): any {
+  return icons.sort((a: any, b: any) => {
     if (a.size < b.size) {
       return 1;
     }
@@ -12,7 +12,7 @@ function sortIconsBySize(icons) {
  * @param icons
  * @param [ext]
  */
-export default function findBestIcon(icons, ext) {
+export default function findBestIcon(icons: any, ext: any): any {
   const sorted = sortIconsBySize(icons);
   if (ext) {
     // eslint-disable-next-line no-restricted-syntax
@@ -22,6 +22,5 @@ export default function findBestIcon(icons, ext) {
       }
     }
   }
-
   return sorted[0];
 }

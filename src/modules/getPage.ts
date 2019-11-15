@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-export default function getPage(pageUrl) {
+export default function getPage(pageUrl: string): Promise<string|Buffer> {
   return new Promise(((resolve, reject) => {
     axios.get(pageUrl)
       .then((response) => {
