@@ -7,7 +7,7 @@ function hrefIsIcon(href: string): boolean {
 
 function getDomainUrl(someUrl: string): string {
   const parsedUrl: UrlWithStringQuery = url.parse(someUrl);
-  parsedUrl.pathname = undefined;
+  parsedUrl.pathname = null;
   return url.format(parsedUrl);
 }
 

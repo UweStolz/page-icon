@@ -2,53 +2,34 @@ import axios from 'axios';
 import url from 'url';
 import fileType from 'file-type';
 
-// Unused!?
-// function getExtension(downloadUrl) {
-//   return downloadUrl.match(/\.(png|jpg|ico)/)[0];
-// }
-
-function getSiteDomain(siteUrl: string): string | undefined {
+function getSiteDomain(siteUrl: string): string | null {
   return url.parse(siteUrl).hostname;
 }
 
-export default async function downloadIcon(iconUrl: string): Promise<any> {
-  const iconData = new Promise(((resolve, reject) => {
-    axios.get(iconUrl, {
-      responseType: 'arraybuffer',
-      // 'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/48.0.2564.116 Safari/537.36'
-    })
-      .then((response) => {
-        resolve(response.data);
-      })
-      .catch((error) => {
-        if (error.status === 404) {
-          resolve();
-          return;
-        }
-        reject(error);
-      });
-  }));
-
-  return iconData.then((iconData: any) => {
-    if (!iconData) {
-      return;
-    }
-
-    const fileDetails = fileType(iconData);
-    if (!fileDetails) {
-      return null;
-    }
-
-    // add `.` to ext
-    fileDetails.ext = `.${fileDetails.ext}` as any;
-
-    // eslint-disable-next-line consistent-return
-    return {
-      source: iconUrl,
-      name: getSiteDomain(iconUrl),
-      data: iconData,
-      size: iconData.length,
-      ...fileDetails,
-    };
+export default async function downloadIcon(iconUrl: string): Promise<any|null> {
+  const response = await axios.get(iconUrl, {
+    responseType: 'arraybuffer',
   });
+
+  if (!response || response.status === 404) {
+    return null;
+  }
+
+  const fileDetails = fileType(response.data);
+  if (!fileDetails) {
+    return null;
+  }
+
+  // add `.` to ext
+  fileDetails.ext = `.${fileDetails.ext}` as any;
+
+  // eslint-disable-next-line consistent-return
+  const iconResponse: PageIcon.IconResponse = {
+    source: iconUrl,
+    name: getSiteDomain(iconUrl),
+    data: response.data,
+    size: response.data.length,
+    ...fileDetails,
+  };
+  return iconResponse;
 }

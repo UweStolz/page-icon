@@ -1,7 +1,8 @@
 import downloadIcon from './downloadIcon';
 
-export default function downloadIcons(iconUrls: any): Promise < unknown[] > {
+export default async function downloadIcons(iconUrls: string[]): Promise<PageIcon.IconResponse[]> {
   const promises = iconUrls.map(downloadIcon);
-  return Promise.all(promises)
-    .then((iconPaths) => iconPaths.filter((element) => !!element));
+  const IconResponses: PageIcon.IconResponse[] = await Promise.all(promises);
+  const filteredResponses: PageIcon.IconResponse[] = IconResponses.filter((element) => !!element);
+  return filteredResponses;
 }
