@@ -2,13 +2,10 @@
 
 A library to find the highest resolution website logo for a given url.
 
-This a Javascript implementation of <http://stackoverflow.com/a/22007642/5076225>.
+This a TypeScript implementation of the original page-icon library.
+
 
 ## Installation
-
-Only supported on Node.js >=v4.2 because of promise support.
-
-If support is desired for earlier versions, a global promise polyfill is required.
 
 ```bash
 $ yarn install page-icon --dev
@@ -49,7 +46,8 @@ $ yarn test
 
 ## License
 
-Original author: Goh Jia Hao  
+Original author: [Goh Jia Hao](<https://github.com/jiahaog>
+)  
 Forked from <https://github.com/jiahaog/page-icon>
 
 MIT
