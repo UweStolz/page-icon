@@ -1,12 +1,12 @@
 import { load } from 'cheerio';
-import url from 'url';
+import url, { UrlWithStringQuery } from 'url';
 
 function hrefIsIcon(href: string): boolean {
   return /((icon.*\.(png|jpg))|(\w+\.ico))/.test(href);
 }
 
 function getDomainUrl(someUrl: string): string {
-  const parsedUrl = url.parse(someUrl);
+  const parsedUrl: UrlWithStringQuery = url.parse(someUrl);
   parsedUrl.pathname = undefined;
   return url.format(parsedUrl);
 }
