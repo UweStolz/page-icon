@@ -1,10 +1,5 @@
-function sortIconsBySize(icons: any): any {
-  return icons.sort((a: any, b: any) => {
-    if (a.size < b.size) {
-      return 1;
-    }
-    return -1;
-  });
+function sortIconsBySize(icons: any[]): any {
+  return icons.sort((a: any, b: any) => (a.size < b.size ? 1 : -1));
 }
 
 /**
