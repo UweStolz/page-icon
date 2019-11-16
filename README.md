@@ -2,7 +2,7 @@
 
 A library to find the highest resolution website logo for a given url.
 
-This a Javascript implementation of http://stackoverflow.com/a/22007642/5076225.
+This a Javascript implementation of <http://stackoverflow.com/a/22007642/5076225>.
 
 ## Installation
 
@@ -47,9 +47,8 @@ const URL = 'https://www.facebook.com/';
 $ yarn test
 ```
 
-
 ## License
 
-Forked from https://github.com/jiahaog/page-icon
+Forked from <https://github.com/jiahaog/page-icon>
 
 MIT
