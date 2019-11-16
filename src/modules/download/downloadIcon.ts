@@ -21,15 +21,15 @@ export default async function downloadIcon(iconUrl: string): Promise<any|null> {
   }
 
   // add `.` to ext
-  fileDetails.ext = `.${fileDetails.ext}` as any;
+  const extension = `.${fileDetails.ext}`;
 
-  // eslint-disable-next-line consistent-return
   const iconResponse: PageIcon.IconResponse = {
     source: iconUrl,
     name: getSiteDomain(iconUrl),
     data: response.data,
     size: response.data.length,
-    ...fileDetails,
+    ext: extension,
+    mime: fileDetails.mime,
   };
   return iconResponse;
 }
