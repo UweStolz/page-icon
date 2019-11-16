@@ -22,13 +22,14 @@ export default async function downloadIcon(iconUrl: string): Promise<any|null> {
   }
 
   const extension = `.${fileDetails.ext}` as PageIcon.Extension;
+  const mimeType = fileDetails.mime as PageIcon.MimeType;
   const iconResponse: PageIcon.IconResponse = {
     source: iconUrl,
     name: getSiteDomain(iconUrl),
     data: response.data,
     size: response.data.length,
     ext: extension,
-    mime: fileDetails.mime,
+    mime: mimeType,
   };
   return iconResponse;
 }
