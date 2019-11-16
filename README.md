@@ -49,6 +49,7 @@ $ yarn test
 
 ## License
 
+Original author: Goh Jia Hao  
 Forked from <https://github.com/jiahaog/page-icon>
 
 MIT
