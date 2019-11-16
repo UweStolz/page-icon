@@ -1,9 +1,10 @@
 import axios from 'axios';
-import url from 'url';
+import url, { UrlWithStringQuery } from 'url';
 import fileType from 'file-type';
 
 function getSiteDomain(siteUrl: string): string | null {
-  return url.parse(siteUrl).hostname;
+  const parsedUrl: UrlWithStringQuery = url.parse(siteUrl);
+  return parsedUrl.hostname;
 }
 
 export default async function downloadIcon(iconUrl: string): Promise<any|null> {
