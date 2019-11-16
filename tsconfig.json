@@ -7,7 +7,7 @@
         "module": "commonjs",
         "strict": true,
         "jsx": "preserve",
-        "allowJs": true,
+        "allowJs": false,
         "importHelpers": true,
         "resolveJsonModule": true,
         "moduleResolution": "node",
@@ -24,6 +24,7 @@
             "scripthost"
         ],
         "typeRoots": [
+            "types",
             "node_modules/@types",
         ]
     },
