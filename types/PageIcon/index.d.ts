@@ -3,12 +3,14 @@
 
     declare global {
         namespace PageIcon {
+            type Extension = '.jpg' | '.png' | '.ico';
+            
             interface IconResponse {
                 source: string;
                 name: string|null;
                 data: Buffer | string;
                 size: number;
-                ext: string;
+                ext: Extension;
                 mime: MimeType;
             }
         }

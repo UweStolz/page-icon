@@ -1,8 +1,7 @@
 import url from 'url';
-import getPage from './modules/getPage';
-import getIconLinks from './modules/getIconLinks';
-import downloadIcons from './modules/download/downloadIcons';
-import findBestIcon from './modules/findBestIcon';
+import {
+  getPage, getIconLinks, downloadIcons, findBestIcon,
+} from './util';
 
 function isHttps(pageUrl: string): boolean {
   return url.parse(pageUrl).protocol === 'https:';
@@ -14,18 +13,19 @@ function makeHttps(pageUrl: string): string {
   return url.format(parsed);
 }
 
-export default async function pageIcon(pageUrl: string, options: any = {}): Promise<any> {
-  const bestWithPref = (icons: any) => findBestIcon(icons, options.ext);
+export default async function pageIcon(pageUrl: string, extension?: PageIcon.Extension): Promise<any> {
+  const bestWithPref = (icons: PageIcon.IconResponse[]): PageIcon.IconResponse => findBestIcon(icons, extension);
 
   const dom = await getPage(pageUrl);
   const iconLinks = getIconLinks(pageUrl, dom);
   const icons = await downloadIcons(iconLinks);
-  const result = await bestWithPref(icons);
+  const result = bestWithPref(icons);
+
   if (result || isHttps(pageUrl)) {
     return result;
   }
   const httpsUrl = makeHttps(pageUrl);
-  return pageIcon(httpsUrl, options);
+  return pageIcon(httpsUrl, extension);
 }
 
 // FIXME - Test

@@ -20,9 +20,7 @@ export default async function downloadIcon(iconUrl: string): Promise<any|null> {
     return null;
   }
 
-  // add `.` to ext
-  const extension = `.${fileDetails.ext}`;
-
+  const extension = `.${fileDetails.ext}` as PageIcon.Extension;
   const iconResponse: PageIcon.IconResponse = {
     source: iconUrl,
     name: getSiteDomain(iconUrl),
