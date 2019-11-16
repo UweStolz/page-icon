@@ -1,3 +1,6 @@
+[![Actions Status](https://github.com/UweStolz/page-icon/workflows/build/badge.svg)](https://github.com/UweStolz/page-icon/actions)
+
+
 # Page Icon
 
 A library to find the highest resolution website logo for a given url.
