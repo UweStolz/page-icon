@@ -44,6 +44,7 @@ export default function getIconLinks(rootUrl: string, dom: string|Buffer): strin
 
   iconLinks = iconLinks.map((iconLink) => url.resolve(rootUrl, iconLink));
 
-  iconLinks.push(url.resolve(getDomainUrl(rootUrl), 'apple-touch-icon.png'));
+  const resolvedUrlForAppleTouchIcon: string = url.resolve(getDomainUrl(rootUrl), 'apple-touch-icon.png');
+  iconLinks.push(resolvedUrlForAppleTouchIcon);
   return iconLinks;
 }
