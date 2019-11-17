@@ -9,6 +9,7 @@ module.exports = {
   extends: [
     'airbnb-base',
     "plugin:@typescript-eslint/recommended",
+    "plugin:jest/recommended",
   ],
 
   rules: {
@@ -20,7 +21,7 @@ module.exports = {
   },
 
   parser: "@typescript-eslint/parser",
-  plugins: ["@typescript-eslint"],
+  plugins: ["@typescript-eslint", "jest"],
 
   settings: {
     "import/resolver": {
