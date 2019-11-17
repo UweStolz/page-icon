@@ -1,7 +1,8 @@
 import { format, parse, UrlWithStringQuery } from 'url';
 
-export default function getDomainUrl(someUrl: string): string {
-  const parsedUrl: UrlWithStringQuery = parse(someUrl);
+export default function getDomainUrl(url: string): string {
+  const parsedUrl: UrlWithStringQuery = parse(url);
   parsedUrl.pathname = null;
-  return format(parsedUrl);
+  const formattedUrl = format(parsedUrl);
+  return formattedUrl;
 }
