@@ -7,7 +7,7 @@
     "build": "yarn run rimraf ./built && yarn run tsc -p ./tsconfig.json",
     "watch": "yarn run tsc -w -p ./tsconfig.json",
     "test": "yarn jest",
-    "test:coverage": "yarn test --collectCoverage=true"
+    "test:coverage": "yarn test --collectCoverage=true --collectCoverageFrom=src/**/*.ts"
   },
   "author": "Uwe Stolz",
   "license": "MIT",
