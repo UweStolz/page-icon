@@ -1,6 +1,6 @@
 import getPage from './getPage';
 import getIconLinks from './iconLinks';
-import downloadIcons from './download/downloadIcons';
+import downloadIcons from './download';
 import findBestIcon from './findBestIcon';
 
 export {
