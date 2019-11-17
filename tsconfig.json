@@ -9,7 +9,6 @@
         "jsx": "preserve",
         "allowJs": false,
         "importHelpers": true,
-        "resolveJsonModule": true,
         "moduleResolution": "node",
         "experimentalDecorators": true,
         "esModuleInterop": true,
@@ -33,5 +32,7 @@
     ],
     "exclude": [
         "node_modules",
+        "coverage",
+        "built",
     ]
 }
