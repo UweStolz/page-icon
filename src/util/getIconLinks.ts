@@ -14,7 +14,7 @@ function getDomainUrl(someUrl: string): string {
 
 function linkTagLinks($: CheerioStatic): string[] {
   const links: string[] = [];
-  $('link').each((index: number, element: CheerioElement) => {
+  $('link').each((_index: number, element: CheerioElement) => {
     const href: string = $(element).attr('href');
     if (hrefIsIcon(href)) {
       links.push(href);
@@ -25,7 +25,7 @@ function linkTagLinks($: CheerioStatic): string[] {
 
 function metaTagLinks($: CheerioStatic): string[] {
   const links: string[] = [];
-  $('meta').each((index: number, element: CheerioElement) => {
+  $('meta').each((_index: number, element: CheerioElement) => {
     const property: string = $(element).attr('property');
     if (property === 'og:image') {
       const graphImageUrl = $(element).attr('content');
