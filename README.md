@@ -11,7 +11,7 @@ This a TypeScript implementation of the original page-icon library.
 ## Installation
 
 ```bash
-$ yarn install page-icon --dev
+$ yarn add page-icon --dev
 ```
 
 ## Usage
