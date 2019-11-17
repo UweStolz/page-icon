@@ -1,5 +1,5 @@
 import getPage from './getPage';
-import getIconLinks from './getIconLinks';
+import getIconLinks from './iconLinks';
 import downloadIcons from './download/downloadIcons';
 import findBestIcon from './findBestIcon';
 
