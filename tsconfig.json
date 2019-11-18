@@ -14,7 +14,7 @@
         "esModuleInterop": true,
         "emitDecoratorMetadata": true,
         "allowSyntheticDefaultImports": true,
-        "sourceMap": true,
+        "sourceMap": false,
         "outDir": "built",
         "lib": [
             "es5",
