@@ -4,13 +4,15 @@ import {
 } from './util';
 
 function isHttps(pageUrl: string): boolean {
-  return url.parse(pageUrl).protocol === 'https:';
+  const isUrlProtocolHttps = url.parse(pageUrl).protocol === 'https:';
+  return isUrlProtocolHttps;
 }
 
 function makeHttps(pageUrl: string): string {
   const parsed = url.parse(pageUrl);
   parsed.protocol = 'https:';
-  return url.format(parsed);
+  const formattedUrl = url.format(parsed);
+  return formattedUrl;
 }
 
 export default async function pageIcon(pageUrl: string, extension?: PageIcon.Extension): Promise<PageIcon.IconResponse> {
