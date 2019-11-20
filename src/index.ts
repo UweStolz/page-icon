@@ -13,7 +13,7 @@ function makeHttps(pageUrl: string): string {
   return url.format(parsed);
 }
 
-export default async function pageIcon(pageUrl: string, extension?: PageIcon.Extension): Promise<any> {
+export default async function pageIcon(pageUrl: string, extension?: PageIcon.Extension): Promise<PageIcon.IconResponse> {
   const bestWithPref = (icons: PageIcon.IconResponse[]): PageIcon.IconResponse => findBestIcon(icons, extension);
 
   const dom = await getPage(pageUrl);

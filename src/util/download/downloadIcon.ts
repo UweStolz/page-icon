@@ -7,7 +7,7 @@ function getSiteDomain(siteUrl: string): string | null {
   return parsedUrl.hostname;
 }
 
-export default async function downloadIcon(iconUrl: string): Promise<any|null> {
+export default async function downloadIcon(iconUrl: string): Promise<PageIcon.IconResponse|null> {
   const response = await axios.get(iconUrl, {
     responseType: 'arraybuffer',
   });
