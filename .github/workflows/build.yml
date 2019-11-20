@@ -25,5 +25,7 @@ jobs:
       run: yarn install
     - name: Compile
       run: yarn run tsc -p ./tsconfig.json
+    - name: Lint
+      run: yarn run lint
       env:
         CI: true
