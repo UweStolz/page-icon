@@ -4,7 +4,8 @@ import {
 } from './util';
 
 function isHttps(pageUrl: string): boolean {
-  const isUrlProtocolHttps = url.parse(pageUrl).protocol === 'https:';
+  const parsedUrl = url.parse(pageUrl);
+  const isUrlProtocolHttps = parsedUrl.protocol === 'https:';
   return isUrlProtocolHttps;
 }
 
@@ -29,15 +30,3 @@ export default async function pageIcon(pageUrl: string, extension?: PageIcon.Ext
   const httpsUrl = makeHttps(pageUrl);
   return pageIcon(httpsUrl, extension);
 }
-
-// FIXME - Test
-async function execute(): Promise<void> {
-  try {
-    const icon = await pageIcon('https://www.facebook.com/');
-    console.log('ICON: ', icon);
-  } catch (err) {
-    console.error(err);
-  }
-}
-
-execute();
