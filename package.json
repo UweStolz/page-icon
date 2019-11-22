@@ -4,8 +4,8 @@
   "description": "Find the best icon for a web page",
   "main": "built/index.js",
   "scripts": {
-    "build": "yarn run rimraf ./built && yarn run tsc -p ./tsconfig.json",
-    "watch": "yarn run tsc -w -p ./tsconfig.json",
+    "build": "yarn run rimraf ./built && yarn run tsc -p ./tsconfig.build.json",
+    "watch": "yarn run tsc -w -p ./tsconfig.build.json",
     "lint": "yarn run eslint --ext .ts .",
     "test": "yarn jest",
     "test:coverage": "yarn test --collectCoverage=true --collectCoverageFrom=src/**/*.ts"

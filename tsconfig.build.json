@@ -16,6 +16,7 @@
         "allowSyntheticDefaultImports": true,
         "sourceMap": false,
         "outDir": "built",
+        "resolveJsonModule": true,
         "lib": [
             "es5",
             "dom",
@@ -28,9 +29,11 @@
         ]
     },
     "include": [
-        "**/*.ts"
+        "**/*.ts",
+        "./package.json"
     ],
     "exclude": [
+        "**/*.test.ts",
         "node_modules",
         "coverage",
         "built"
