@@ -2,7 +2,10 @@
   "name": "page-icon",
   "version": "0.1.0",
   "description": "Find the best icon for a web page",
-  "main": "built/index.js",
+  "main": "./bin/pageIcon.js",
+  "bin": {
+    "pageIcon": "./bin/pageIcon.js"
+  },
   "scripts": {
     "build": "yarn run rimraf ./built && yarn run tsc -p ./tsconfig.build.json",
     "watch": "yarn run tsc -w -p ./tsconfig.build.json",

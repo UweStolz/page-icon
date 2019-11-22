@@ -7,7 +7,7 @@
         "module": "commonjs",
         "strict": true,
         "jsx": "preserve",
-        "allowJs": false,
+        "allowJs": true,
         "importHelpers": true,
         "moduleResolution": "node",
         "experimentalDecorators": true,
@@ -30,6 +30,7 @@
     },
     "include": [
         "**/*.ts",
+        "bin",
         "./package.json"
     ],
     "exclude": [
