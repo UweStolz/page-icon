@@ -9,6 +9,7 @@ module.exports = {
   testEnvironment: 'node',
   clearMocks: true,
   restoreMocks: true,
+  resetModules: true,
   testRegex: '(/__tests__/.*|(\\.|/)(test))\\.ts$',
   transform: {
     '^.+\\.ts$': 'ts-jest',
