@@ -1,11 +1,6 @@
 import axios from 'axios';
-import url, { UrlWithStringQuery } from 'url';
 import fileType from 'file-type';
-
-function getSiteDomain(siteUrl: string): string | null {
-  const parsedUrl: UrlWithStringQuery = url.parse(siteUrl);
-  return parsedUrl.hostname;
-}
+import getSiteDomain from './getSiteDomain';
 
 export default async function downloadIcon(iconUrl: string): Promise<PageIcon.IconResponse|null> {
   const response = await axios.get(iconUrl, {

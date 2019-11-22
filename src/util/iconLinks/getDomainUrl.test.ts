@@ -19,12 +19,12 @@ const mockedUrlObject = {
 const URL = 'https://www.SomeUrl.com/';
 
 test('Gives out the proper domain URL', () => {
-  const spyParse = jest.spyOn(url, 'parse').mockImplementationOnce((): any => mockedUrlObject);
-  const spyFormat = jest.spyOn(url, 'format');
+  const mockedParse = jest.spyOn(url, 'parse').mockImplementationOnce((): any => mockedUrlObject);
+  const mockedFormat = jest.spyOn(url, 'format').mockImplementationOnce(() => 'https://www.someurl.com');
 
   const result = getDomainUrl(URL);
 
-  expect(spyParse).toHaveBeenCalledWith(URL);
-  expect(spyFormat).toHaveBeenCalled();
+  expect(mockedParse).toHaveBeenCalledWith(URL);
+  expect(mockedFormat).toHaveBeenCalled();
   expect(result).toBe('https://www.someurl.com');
 });
