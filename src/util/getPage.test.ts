@@ -1,7 +1,7 @@
 import axios from 'axios';
 import getPage from './getPage';
 
-test('', async () => {
+test('Gets the data from the response', async () => {
   jest.spyOn(axios, 'get').mockImplementationOnce(async () => ({
     data: 'someData',
   }));
