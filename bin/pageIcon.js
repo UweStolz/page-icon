@@ -11,5 +11,3 @@ const extension = args[1];
     const result = await pageIcon.default(pageUrl, extension);
     console.log(result)
 })()
-
-module.exports = pageIcon.default;
