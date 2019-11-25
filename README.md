@@ -1,58 +1,54 @@
-# Page Icon
+[![Actions Status](https://github.com/UweStolz/page-icon/workflows/build/badge.svg)](https://github.com/UweStolz/page-icon/actions)
 
-[![Build Status](https://travis-ci.org/jiahaog/page-icon.svg?branch=master)](https://travis-ci.org/jiahaog/page-icon)
-[![Code Climate](https://codeclimate.com/github/jiahaog/page-icon/badges/gpa.svg)](https://codeclimate.com/github/jiahaog/page-icon)
+
+# Page Icon
 
 A library to find the highest resolution website logo for a given url.
 
-This a Javascript implementation of http://stackoverflow.com/a/22007642/5076225.
+This a TypeScript implementation of the original page-icon library.
+
 
 ## Installation
 
-Only supported on Node.js >=v4.2 because of promise support.
-
-If support is desired for earlier versions, a global promise polyfill is required.
-
 ```bash
-$ npm install --save page-icon
+$ yarn add page-icon --dev
 ```
 
 ## Usage
 
-```javascript
-const pageIcon = require('page-icon');
+```typescript
+import pageIcon from 'page-icon';
 
 const URL = 'https://www.facebook.com/';
-pageIcon(siteUrl)
-    .then(function(icon) {
-        // do things with icon object
-        console.log(icon);
-    })
-    .catch(error => {
-        console.error(error);
-    });
-});
+  try {
+    const icon = await pageIcon(URL);
+    console.log('ICON: ', icon);
+  } catch (err) {
+    console.error(err);
+  }
 ```
+
+### Option
+
+Optionally the function takes one of the following extension `.jpg`, `.png` or `.ico`.
 
 #### Example Icon Object
 
-```javascript
+```typescript
 { 
-    source: 'https://www.facebook.com/apple-touch-icon.png',
+    source: 'https://www.facebook.com/images/fb_icon_325x325.png',
     name: 'www.facebook.com',
     data: <Buffer 89 50 4e ... >,
-    size: 1779,
+    size: 1919,
     ext: '.png',
     mime: 'image/png' 
 }
 ```
 
-## Tests
-
-```bash
-$ npm test
-```
-
 ## License
+
+Original author: [Goh Jia Hao](<https://github.com/jiahaog>
+)  
+Forked from <https://github.com/jiahaog/page-icon>
 
 MIT
