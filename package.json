@@ -1,6 +1,6 @@
 {
   "name": "page-icon-finder",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Find the best icon for a web page",
   "main": "./bin/pageIcon.js",
   "bin": {

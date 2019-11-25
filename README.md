@@ -7,14 +7,23 @@ A library to find the highest resolution website logo for a given url.
 
 This a TypeScript implementation of the original page-icon library.
 
-
-## Installation
+### Installation
 
 ```bash
-$ yarn add page-icon --dev
+yarn global add page-icon
+or
+yarn add page-icon
 ```
 
 ## Usage
+
+### CLI
+
+```bash
+pageIcon <URL> [extension]
+```
+
+### Programmatic
 
 ```typescript
 import pageIcon from 'page-icon';
