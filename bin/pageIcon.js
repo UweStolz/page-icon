@@ -7,4 +7,9 @@ const args = process.argv.slice(2, 4);
 const pageUrl = args[0];
 const extension = args[1];
 
-pageIcon.default(pageUrl, extension);
+(async () => {
+    const result = await pageIcon.default(pageUrl, extension);
+    console.log(result)
+})()
+
+module.exports = pageIcon.default;
