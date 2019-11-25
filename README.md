@@ -45,12 +45,6 @@ Optionally the function takes one of the following extension `.jpg`, `.png` or `
 }
 ```
 
-## Tests
-
-```bash
-$ yarn test
-```
-
 ## License
 
 Original author: [Goh Jia Hao](<https://github.com/jiahaog>
