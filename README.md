@@ -10,9 +10,9 @@ This a TypeScript implementation of the original page-icon library.
 ### Installation
 
 ```bash
-yarn global add page-icon
+yarn global add page-icon-finder
 or
-yarn add page-icon
+yarn add page-icon-finder
 ```
 
 ## Usage
