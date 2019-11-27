@@ -19,15 +19,15 @@ jobs:
     - name: Install
       run: yarn install
     - name: Compile
-      run: yarn run tsc -p ./tsconfig.json
+      run: yarn run tsc -p ./tsconfig.build.json
     - name: Lint
       run: yarn run lint
     - name: Test
       run: yarn run test
-    - name: Install Production Build
-      run: |
-        cp ./README.md built/
-        cd built/ && yarn install --production
+    - name: Copy Readme to production build
+      run: cp ./README.md built/
+    - name: Install production build
+      run: cd built/ && yarn install --production
     - name: npm publish
       run: |
         npm config set //registry.npmjs.org/:_authToken=$NODE_AUTH_TOKEN
