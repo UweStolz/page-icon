@@ -4,7 +4,6 @@
     },
     "compilerOptions": {
         "declaration": true,
-        "declarationDir": "built",
         "target": "es5",
         "module": "commonjs",
         "strict": true,
