@@ -1,35 +1,37 @@
-name: publish
-
 on:
   push:
     branches:
     - release
 
 jobs:
-  build:
-
+  publish:
+    name: publish
     runs-on: ubuntu-latest
-
     strategy:
       matrix:
         node-version: [12.x]
-
     steps:
     - uses: actions/checkout@v1
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-    - name: Install & Build
-      run: |
-        yarn install
-        yarn build
-        cp ./README.md built/
-        cd built/ && yarn install --production
+    - name: Install
+      run: yarn install
+    - name: Compile
+      run: yarn run tsc -p ./tsconfig.build.json
+    - name: Lint
+      run: yarn run lint
+    - name: Test
+      run: yarn run test
+    - name: Copy Readme to production build
+      run: cp ./README.md built/
+    - name: Install production build
+      run: cd built/ && yarn install --production
     - name: npm publish
       run: |
         npm config set //registry.npmjs.org/:_authToken=$NODE_AUTH_TOKEN
-        cd built/ && npm publish || true
+        cd built/ && npm publish
       env:
         CI: true
         NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}

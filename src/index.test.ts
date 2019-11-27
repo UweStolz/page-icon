@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import url from 'url';
 import * as util from './util';
+import { PageIcon } from '../types';
 
 const mockedResponseData = `
 <head>

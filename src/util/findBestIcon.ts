@@ -1,3 +1,5 @@
+import { PageIcon } from '../../types';
+
 function sortIconsBySize(icons: PageIcon.IconResponse[]): PageIcon.IconResponse[] {
   return icons.sort((a, b) => (a.size < b.size ? 1 : -1));
 }

@@ -1,4 +1,5 @@
 import findBestIcon from './findBestIcon';
+import { PageIcon } from '../../types';
 
 const iconResponses: PageIcon.IconResponse[] = [
   {

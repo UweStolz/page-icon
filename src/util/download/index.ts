@@ -1,4 +1,5 @@
 import downloadIcon from './downloadIcon';
+import { PageIcon } from '../../../types';
 
 export default async function downloadIcons(iconUrls: string[]): Promise<PageIcon.IconResponse[]> {
   const promises = iconUrls.map(downloadIcon);

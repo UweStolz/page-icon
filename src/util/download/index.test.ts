@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { PageIcon } from '../../../types';
 
 const mockedIconUrls = [
   'https://www.example1.com',
@@ -19,12 +21,12 @@ const mockedIconResponse = jest.fn();
 jest.mock('./downloadIcon', () => mockedIconResponse);
 
 // eslint-disable-next-line import/first
-import downloadIcons from '.';
+import downloadIcons from './index';
 
 test('Null responses will be filtered out', async () => {
   mockedIconResponse
-    .mockImplementationOnce(() => iconResponse)
-    .mockImplementationOnce(() => emptyIconResponse);
+    .mockImplementationOnce(async () => iconResponse)
+    .mockImplementationOnce(async () => emptyIconResponse);
 
   const result = await downloadIcons(mockedIconUrls);
   expect(mockedIconResponse).toHaveBeenCalled();
