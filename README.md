@@ -60,4 +60,4 @@ Original author: [Goh Jia Hao](<https://github.com/jiahaog>
 )  
 Forked from <https://github.com/jiahaog/page-icon>
 
-MIT
+[MIT](LICENSE.md)
