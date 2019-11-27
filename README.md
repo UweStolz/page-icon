@@ -39,7 +39,7 @@ const URL = 'https://www.facebook.com/';
 
 ### Option
 
-Optionally the function takes one of the following extension `.jpg`, `.png` or `.ico`.
+Optionally the function takes one of the following extensions `.jpg`, `.png` or `.ico`.
 
 #### Example Icon Object
 
