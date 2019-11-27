@@ -1,2 +1,3 @@
-import pageIcon from './src/index.js';
+import pageIcon from './src';
+
 export default pageIcon;

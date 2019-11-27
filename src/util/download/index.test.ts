@@ -1,4 +1,8 @@
 
+// eslint-disable-next-line import/first
+import downloadIcons from '.';
+import { PageIcon } from '../../../types';
+
 const mockedIconUrls = [
   'https://www.example1.com',
   'https://www.example2.com',
@@ -17,9 +21,6 @@ const emptyIconResponse = null;
 
 const mockedIconResponse = jest.fn();
 jest.mock('./downloadIcon', () => mockedIconResponse);
-
-// eslint-disable-next-line import/first
-import downloadIcons from '.';
 
 test('Null responses will be filtered out', async () => {
   mockedIconResponse

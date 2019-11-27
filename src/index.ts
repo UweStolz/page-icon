@@ -2,6 +2,7 @@ import url from 'url';
 import {
   getPage, getIconLinks, downloadIcons, findBestIcon,
 } from './util';
+import { PageIcon } from '../types';
 
 function isHttps(pageUrl: string): boolean {
   const parsedUrl = url.parse(pageUrl);

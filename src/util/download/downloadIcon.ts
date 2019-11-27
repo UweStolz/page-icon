@@ -1,6 +1,7 @@
 import axios from 'axios';
 import fileType from 'file-type';
 import getSiteDomain from './getSiteDomain';
+import { PageIcon } from '../../../types';
 
 export default async function downloadIcon(iconUrl: string): Promise<PageIcon.IconResponse|null> {
   const response = await axios.get(iconUrl, {
