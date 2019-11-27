@@ -44,5 +44,6 @@
   "bugs": {
     "url": "https://github.com/UweStolz/page-icon/issues"
   },
-  "homepage": "https://github.com/UweStolz/page-icon#readme"
+  "homepage": "https://github.com/UweStolz/page-icon#readme",
+  "keywords": ["icon", "finder"]
 }
