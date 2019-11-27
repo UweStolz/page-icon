@@ -1,9 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import url from 'url';
 import * as util from './util';
-
-// eslint-disable-next-line import/first
-import pageIcon from './index';
 import { PageIcon } from '../types';
 
 const mockedResponseData = `
@@ -48,6 +45,9 @@ const mockedIconResponses: PageIcon.IconResponse[] = [
     source: 'https://www.someurl.com/apple-touch-icon.png',
   },
 ];
+
+// eslint-disable-next-line import/first
+import pageIcon from './index';
 
 test('Get the best icon from the given page', async () => {
   const URL = 'http://www.someurl.com/';
