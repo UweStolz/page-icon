@@ -1,4 +1,4 @@
-[![Actions Status](https://github.com/UweStolz/page-icon/workflows/build/badge.svg)](https://github.com/UweStolz/page-icon/actions)
+[![Actions Status](https://github.com/UweStolz/page-icon/workflows/action/badge.svg)](https://github.com/UweStolz/page-icon/actions)
 
 
 # Page Icon
