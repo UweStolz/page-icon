@@ -1,6 +1,6 @@
 {
   "name": "page-icon-finder",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "description": "Find the best icon for a web page",
   "main": "./index.js",
   "bin": {
@@ -45,5 +45,8 @@
     "url": "https://github.com/UweStolz/page-icon/issues"
   },
   "homepage": "https://github.com/UweStolz/page-icon#readme",
-  "keywords": ["icon", "finder"]
+  "keywords": [
+    "icon",
+    "finder"
+  ]
 }
