@@ -1,13 +1,13 @@
 #!/usr/bin/env node
 
+const program = require('commander');
 const pageIcon = require('../src/index.js');
 
-const args = process.argv.slice(2, 4);
-
-const pageUrl = args[0];
-const extension = args[1];
-
-(async () => {
-    const result = await pageIcon.default(pageUrl, extension);
-    console.log(result)
-})()
+program
+    .command('pageicon <url> [extension]')
+    .description('')
+    .action(async (url, extension) => {
+        const result = await pageIcon.default(url, extension);
+        console.log(result)
+    })
+    .parse(process.argv);
