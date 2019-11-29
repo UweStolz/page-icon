@@ -3,7 +3,7 @@
 import { Command } from '@oclif/command';
 import pageIcon from '../src';
 
-class Pageicon extends Command {
+export default class Pageicon extends Command {
     static args = [
       {
         name: 'url',
