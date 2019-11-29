@@ -3,7 +3,7 @@
         "enable": true
     },
     "compilerOptions": {
-        "target": "es5",
+        "target": "es6",
         "module": "commonjs",
         "strict": true,
         "jsx": "preserve",
@@ -17,7 +17,7 @@
         "sourceMap": false,
         "outDir": "built",
         "lib": [
-            "es5",
+            "es6",
             "dom",
             "dom.iterable",
             "scripthost"
