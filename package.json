@@ -3,6 +3,9 @@
   "version": "1.0.10",
   "description": "Find the best icon for a web page",
   "main": "./index.js",
+  "files": [
+    "built"
+  ],
   "bin": {
     "pageicon": "./bin/pageIcon.js"
   },
@@ -16,9 +19,12 @@
   "author": "Uwe Stolz",
   "license": "MIT",
   "dependencies": {
+    "@oclif/command": "^1.5.19",
+    "@oclif/config": "^1.13.3",
+    "@oclif/errors": "^1.2.2",
+    "@oclif/plugin-help": "^2.2.1",
     "axios": "^0.19.0",
     "cheerio": "^1.0.0-rc.3",
-    "commander": "^4.0.1",
     "file-type": "^12.4.0",
     "tslib": "^1.10.0"
   },
