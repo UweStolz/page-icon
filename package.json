@@ -14,7 +14,7 @@
     "watch": "yarn run tsc -w -p ./tsconfig.build.json",
     "lint": "yarn run eslint --ext .ts .",
     "test": "yarn jest",
-    "test:coverage": "yarn test --collectCoverage=true --collectCoverageFrom=src/**/*.ts"
+    "test:coverage": "yarn test --collectCoverage=true --collectCoverageFrom={src,bin}/{**/*.ts,*}"
   },
   "author": "Uwe Stolz",
   "license": "MIT",
