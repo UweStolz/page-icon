@@ -25,10 +25,6 @@ jobs:
       with:
         token: ${{secrets.CODECOV_TOKEN}}
         flags: unittests      
-    - name: Copy Readme to production build
-      run: cp ./README.md built/
-    - name: Install production build
-      run: cd built/ && yarn install --production
     - name: github package publish
       run: |
         LATEST=`npm view . version`
