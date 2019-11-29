@@ -1,13 +1,11 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-// import { expect, test } from '@oclif/test';
+import { stdout, stderr } from 'stdout-stderr';
 
 const mockDefault = jest.fn();
 jest.mock('../src', () => mockDefault);
 
 // eslint-disable-next-line import/first
 import Pageicon from './pageIcon';
-
-// FIXME
 
 test('Calls the function without an extension', async () => {
   const testUrl = 'https://www.example.com/';
@@ -35,18 +33,20 @@ test('Calls the function with an extension', async () => {
 });
 
 test('Calls the function without any arguments', async () => {
+  stdout.print = true;
+  stderr.print = true;
+  stdout.start();
+  stderr.start();
   mockDefault.mockImplementationOnce(async (): Promise<any> => {});
   jest.spyOn(console, 'log').mockImplementation(() => {});
 
-  const mockedConsoleLog = jest.spyOn(console, 'log').mockImplementation(() => {});
-  //   const mockedConsoleError = jest.spyOn(console, 'error').mockImplementation(() => {});
-  // const mockedConsoleWarn = jest.spyOn(console, 'warn').mockImplementation(() => {});
-  const stderr: any = [];
-  jest.spyOn(process.stderr, 'write').mockImplementation((val) => stderr.push(val));
-  console.log(stderr);
+  const stdOutOutput = stdout;
+  const stdErrOutput = stderr;
 
   await Pageicon.run();
   expect(mockDefault).toHaveBeenCalled();
-  expect(mockedConsoleLog).not.toHaveBeenCalled();
+  expect(stdErrOutput).toHaveBeenCalled();
   // expect(mockedConsoleError).toHaveBeenCalledWith(expect.stringContaining('Missing'));
+  stdout.stop();
+  stderr.stop();
 });
