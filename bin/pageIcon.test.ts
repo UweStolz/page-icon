@@ -36,7 +36,7 @@ test('Calls the function with an extension', async () => {
   expect(mockedConsolelog).toHaveBeenCalledWith(mockedResult);
 });
 
-test('Calls the function with an the -b flag', async () => {
+test('Calls the function with the -b flag', async () => {
   const testUrl = 'https://www.example.com/';
   const testFlag = '-b';
   const args: string[] = [testUrl, testFlag];
@@ -49,6 +49,21 @@ test('Calls the function with an the -b flag', async () => {
 
   expect(mockDefault).toHaveBeenCalledWith(testUrl, undefined);
   expect(mockedConsolelog).toHaveBeenCalledWith('00 00 01 00 01 00 10 10 00 00 01 00 20 00 68 04');
+});
+
+test('Calls the function with the -b flag and do not join the result if it is not possible', async () => {
+  const testUrl = 'https://www.example.com/';
+  const testFlag = '-b';
+  const args: string[] = [testUrl, testFlag];
+  const mockedResult = {
+    data: '',
+  };
+  mockDefault.mockImplementationOnce(async (): Promise<any> => mockedResult);
+  const mockedConsolelog = jest.spyOn(console, 'log').mockImplementation(() => {});
+  await Pageicon.run(args);
+
+  expect(mockDefault).toHaveBeenCalledWith(testUrl, undefined);
+  expect(mockedConsolelog).toHaveBeenCalledWith('');
 });
 
 test('Calls the function with a wrong extension', async () => {
