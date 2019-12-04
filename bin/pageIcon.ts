@@ -39,7 +39,7 @@ export default class Pageicon extends Command {
       const result = await pageIcon(parsed.args.url, parsed.args.extension);
       if (parsed.flags.buffer) {
         const buffer = result.data.toString('hex').match(/../g)?.join(' ');
-        this.log(buffer);
+        console.log(buffer);
       } else {
         console.log(result);
       }
