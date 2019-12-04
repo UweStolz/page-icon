@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-empty-function */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 const mockDefault = jest.fn();
 jest.mock('../src', () => mockDefault);
