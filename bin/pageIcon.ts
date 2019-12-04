@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-import { Command } from '@oclif/command';
+import { Command, flags } from '@oclif/command';
 import pageIcon from '../src';
 
 export default class Pageicon extends Command {
@@ -18,6 +18,14 @@ export default class Pageicon extends Command {
       },
     ]
 
+    static flags = {
+      buffer: flags.boolean({
+        description: 'Only output the whole Buffer of the icon',
+        char: 'b',
+        required: false,
+      }),
+    }
+
     static description = 'Find the best icon for a web page'
 
     static examples = [
@@ -27,9 +35,14 @@ export default class Pageicon extends Command {
     ]
 
     async run(): Promise<void> {
-      const { args } = this.parse(Pageicon);
-      const result = await pageIcon(args.url, args.extension);
-      console.log(result);
+      const parsed = this.parse(Pageicon);
+      const result = await pageIcon(parsed.args.url, parsed.args.extension);
+      if (parsed.flags.buffer) {
+        const buffer = result.data.toString('hex').match(/../g)?.join(' ');
+        this.log(buffer);
+      } else {
+        console.log(result);
+      }
     }
 }
 
