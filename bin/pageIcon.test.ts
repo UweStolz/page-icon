@@ -63,7 +63,7 @@ test('Calls the function with the -b flag and do not join the result if it is no
   await Pageicon.run(args);
 
   expect(mockDefault).toHaveBeenCalledWith(testUrl, undefined);
-  expect(mockedConsolelog).toHaveBeenCalledWith('');
+  expect(mockedConsolelog).toHaveBeenCalledWith(undefined);
 });
 
 test('Calls the function with a wrong extension', async () => {
