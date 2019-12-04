@@ -1,8 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { stdout, stderr } from 'stdout-stderr';
-
 const mockDefault = jest.fn();
 jest.mock('../src', () => mockDefault);
+jest.mock('@oclif/errors/handle');
 
 // eslint-disable-next-line import/first
 import Pageicon from './pageIcon';
@@ -10,7 +9,9 @@ import Pageicon from './pageIcon';
 test('Calls the function without an extension', async () => {
   const testUrl = 'https://www.example.com/';
   const args: string[] = [testUrl];
-  const mockedResult = 'someResult';
+  const mockedResult = {
+    result: 'someResult',
+  };
   mockDefault.mockImplementationOnce(async (): Promise<any> => mockedResult);
   const mockedConsolelog = jest.spyOn(console, 'log').mockImplementation(() => {});
   await Pageicon.run(args);
@@ -23,7 +24,9 @@ test('Calls the function with an extension', async () => {
   const testUrl = 'https://www.example.com/';
   const testExtension = '.png';
   const args: string[] = [testUrl, testExtension];
-  const mockedResult = 'someResult';
+  const mockedResult = {
+    result: 'someResult',
+  };
   mockDefault.mockImplementationOnce(async (): Promise<any> => mockedResult);
   const mockedConsolelog = jest.spyOn(console, 'log').mockImplementation(() => {});
   await Pageicon.run(args);
@@ -32,21 +35,34 @@ test('Calls the function with an extension', async () => {
   expect(mockedConsolelog).toHaveBeenCalledWith(mockedResult);
 });
 
-test('Calls the function without any arguments', async () => {
-  stdout.print = true;
-  stderr.print = true;
-  stdout.start();
-  stderr.start();
+test('Calls the function with a wrong extension', async () => {
+  const testUrl = 'https://www.example.com/';
+  const testExtension = '.txt';
+  const args: string[] = [testUrl, testExtension];
+
   mockDefault.mockImplementationOnce(async (): Promise<any> => {});
-  jest.spyOn(console, 'log').mockImplementation(() => {});
 
-  const stdOutOutput = stdout;
-  const stdErrOutput = stderr;
+  let error;
+  try {
+    await Pageicon.run(args);
+  } catch (err) {
+    error = err;
+  }
 
-  await Pageicon.run();
-  expect(mockDefault).toHaveBeenCalled();
-  expect(stdErrOutput).toHaveBeenCalled();
-  // expect(mockedConsoleError).toHaveBeenCalledWith(expect.stringContaining('Missing'));
-  stdout.stop();
-  stderr.stop();
+  expect(mockDefault).not.toHaveBeenCalled();
+  expect(error).toHaveProperty('message', expect.stringContaining(`Expected ${testExtension} to be one of: .jpg, .png, .ico`));
+});
+
+test('Calls the function without any arguments', async () => {
+  mockDefault.mockImplementationOnce(async (): Promise<any> => {});
+
+  let error;
+  try {
+    await Pageicon.run();
+  } catch (err) {
+    error = err;
+  }
+
+  expect(mockDefault).not.toHaveBeenCalled();
+  expect(error).toHaveProperty('message', expect.stringContaining('Missing 1 required arg'));
 });
