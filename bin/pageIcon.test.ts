@@ -86,10 +86,10 @@ test('Calls the function with a wrong extension', async () => {
 
 test('Calls the function without any arguments', async () => {
   mockDefault.mockImplementationOnce(async (): Promise<any> => {});
-
+  const args: any[] = [];
   let error;
   try {
-    await Pageicon.run();
+    await Pageicon.run(args);
   } catch (err) {
     error = err;
   }
