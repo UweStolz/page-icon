@@ -4,7 +4,7 @@
     },
     "compilerOptions": {
         "declaration": true,
-        "target": "es5",
+        "target": "es6",
         "module": "commonjs",
         "strict": true,
         "jsx": "preserve",
@@ -19,16 +19,14 @@
         "outDir": "built",
         "resolveJsonModule": true,
         "lib": [
-            "es5",
+            "es6",
             "dom",
             "dom.iterable",
             "scripthost"
         ],
     },
     "include": [
-        "**/*.ts",
-        "bin",
-        "./package.json"
+        "**/*.ts"
     ],
     "exclude": [
         "**/*.test.ts",

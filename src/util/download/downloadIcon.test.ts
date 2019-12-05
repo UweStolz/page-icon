@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-empty-function */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import axios from 'axios';
 import * as getSiteDomain from './getSiteDomain';
