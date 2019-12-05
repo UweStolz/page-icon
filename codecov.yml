@@ -1,0 +1,15 @@
+codecov:
+  branch: master
+coverage:
+  range: 50...80
+  round: down
+  precision: 2
+  parsers:
+    javascript:
+      enable_partials: yes
+  ignore:
+    - "**/*.yml"
+    - "**/*.json"
+    - "**/*.lock"
+    - ".eslint*"
+    - "jest.config.js"

@@ -1,4 +1,5 @@
 [![Actions Status](https://github.com/UweStolz/page-icon/workflows/publish/badge.svg)](https://github.com/UweStolz/page-icon/actions)
+[![codecov](https://codecov.io/gh/UweStolz/page-icon-finder/branch/release/graph/badge.svg)](https://codecov.io/gh/UweStolz/page-icon-finder)
 
 
 # Page Icon
@@ -19,8 +20,22 @@ yarn add page-icon-finder
 
 ### CLI
 
-```bash
-pageIcon <URL> [extension]
+```
+USAGE
+  $ page-icon-finder <URL> [EXTENSION]
+
+ARGUMENTS
+  URL        URL to search the icon in
+  EXTENSION  (.jpg|.png|.ico) Filetype to search for
+
+OPTIONS
+  -b, --buffer  Only output the whole Buffer of the icon
+
+EXAMPLES
+  $ pageicon <url> [extension]
+  $ pageicon https://www.wikipedia.com
+  $ pageicon https://www.wikipedia.com .png
+
 ```
 
 ### Programmatic
@@ -39,7 +54,7 @@ const URL = 'https://www.facebook.com/';
 
 ### Option
 
-Optionally the function takes one of the following extension `.jpg`, `.png` or `.ico`.
+Optionally the function takes one of the following extensions `.jpg`, `.png` or `.ico`.
 
 #### Example Icon Object
 
@@ -60,4 +75,4 @@ Original author: [Goh Jia Hao](<https://github.com/jiahaog>
 )  
 Forked from <https://github.com/jiahaog/page-icon>
 
-MIT
+[MIT](LICENSE.md)

@@ -7,15 +7,11 @@ jobs:
   publish:
     name: publish
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [12.x]
     steps:
     - uses: actions/checkout@v1
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v1
+    - uses: actions/setup-node@v1
       with:
-        node-version: ${{ matrix.node-version }}
+        node-version: 12.x
     - name: Install
       run: yarn install
     - name: Compile
@@ -23,15 +19,21 @@ jobs:
     - name: Lint
       run: yarn run lint
     - name: Test
-      run: yarn run test
-    - name: Copy Readme to production build
-      run: cp ./README.md built/
-    - name: Install production build
-      run: cd built/ && yarn install --production
+      run: yarn run test:coverage
+    - name: Upload coverage to Codecov  
+      uses: codecov/codecov-action@v1.0.3
+      with:
+        token: ${{secrets.CODECOV_TOKEN}}
+        flags: unittests      
     - name: npm publish
       run: |
-        npm config set //registry.npmjs.org/:_authToken=$NODE_AUTH_TOKEN
-        cd built/ && npm publish
+        LATEST=`npm view . version`
+        CURRENT=`cat package.json | jq -r .version`
+        if [ "$LATEST" != "$CURRENT" ]
+        then
+          npm config set //registry.npmjs.org/:_authToken=$NODE_AUTH_TOKEN
+          npm publish
+        fi
       env:
         CI: true
         NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
