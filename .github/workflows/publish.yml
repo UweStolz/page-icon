@@ -36,4 +36,4 @@ jobs:
         fi
       env:
         CI: true
-        NODE_AUTH_TOKEN: ${{ secrets.GITHUB_PACKAGE_AUTH }}
+        NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
