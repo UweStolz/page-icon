@@ -1,7 +1,7 @@
 import axios from 'axios';
-import fileType from 'file-type';
 import getSiteDomain from './getSiteDomain';
 import { PageIcon } from '../../../types';
+import getFileType from './getFileType';
 
 export default async function downloadIcon(iconUrl: string): Promise<PageIcon.IconResponse|null> {
   const response = await axios.get(iconUrl, {
@@ -12,7 +12,7 @@ export default async function downloadIcon(iconUrl: string): Promise<PageIcon.Ic
     return null;
   }
 
-  const fileDetails = fileType(response.data);
+  const fileDetails = await getFileType(response.data);
   if (!fileDetails) {
     return null;
   }
