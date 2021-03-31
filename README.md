@@ -2,7 +2,7 @@
 [![codecov](https://codecov.io/gh/UweStolz/page-icon-finder/branch/release/graph/badge.svg)](https://codecov.io/gh/UweStolz/page-icon-finder)
 
 
-# Page Icon
+# Page Icon finder
 
 A library to find the highest resolution website logo for a given url.
 
